@@ -1,0 +1,57 @@
+{
+    "name": "vamtiger-bundle-text",
+    "version": "0.0.1",
+    "description": "Bundle Text Files into a Single Typescript Module",
+    "main": "build/vamtiger-bundle-text.js",
+    "scripts": {
+        "test": "npm run build && npm run mocha",
+        "mocha": "mocha build/test --recursive",
+        "build": "tsc",
+        "commit": "npm run bundle && vamtiger-node-typescript-commit --push --publish --buildScript bundle",
+        "clean-bundle": "vamtiger-remove -d build -p \"(vamtiger-bundle-text|types)\\\\.(js(.map)?|d.ts)\"",
+        "clean": "rm -rf build/*",
+        "bundle-source": "vamtiger-bundle-typescript --relativePath --entryFilePath source/vamtiger-bundle-text.ts --bundleFilePath build/vamtiger-bundle-text.js --format cjs --sourcemap true --copySourceMap --minify --bin",
+        "bundle": "npm test && npm run clean && npm run build && npm run bundle-source && npm run clean-bundle",
+        "watch": "npm run bundle -- --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vamtiger-project/vamtiger-bundle-text.git"
+    },
+    "keywords": [
+        "vamtiger",
+        "bundle",
+        "text"
+    ],
+    "author": "Vamtiger Immortalles",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/vamtiger-project/vamtiger-bundle-text/issues"
+    },
+    "homepage": "https://github.com/vamtiger-project/vamtiger-bundle-text#readme",
+    "types": "build/types.d.ts",
+    "bin": {
+        "vamtiger-bundle-text": "build/vamtiger-bundle-text.js"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.1.7",
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^12.0.8",
+        "chai": "^4.2.0",
+        "mocha": "^6.1.4",
+        "typescript": "^3.5.2",
+        "vamtiger-bash": "0.0.25",
+        "vamtiger-bundle-css-next": "^0.4.1",
+        "vamtiger-bundle-html": "^0.2.8",
+        "vamtiger-bundle-typescript": "0.0.36",
+        "vamtiger-get-directory-content": "0.0.35",
+        "vamtiger-node-typescript-commit": "^0.9.1",
+        "vamtiger-remove": "0.0.5"
+    },
+    "dependencies": {
+        "vamtiger-argv": "^1.2.6",
+        "vamtiger-create-file": "0.0.10",
+        "vamtiger-get-directory-content-recursive": "0.0.15",
+        "vamtiger-get-file-text": "0.0.6"
+    }
+}
