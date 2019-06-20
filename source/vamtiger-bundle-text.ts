@@ -13,6 +13,7 @@ const { cwd } = process;
 const folder = args.has(CommandlineArguments.folder) && resolvePath(cwd(), args.get(CommandlineArguments.folder) as string);
 const name = args.has(CommandlineArguments.name) && args.get(CommandlineArguments.name);
 const type = (args.has(CommandlineArguments.type) && args.get(CommandlineArguments.type) || BundleType.ts) as BundleType;
+const filter = args.has(CommandlineArguments.filter) && args.get(CommandlineArguments.filter) || '';
 const { noName, noFolder } = ErrorMessage;
 
 if (!name) {
@@ -21,7 +22,7 @@ if (!name) {
     throw new Error(noFolder);
 }
 
-bundleText({ folder, name, type });
+bundleText({ folder, name, type, filter });
 
 async function bundleText({ folder, name, type }: IGetBundleExport) {
     const bundleText = await getBundleExport({ folder, name, type })
