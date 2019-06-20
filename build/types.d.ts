@@ -9,7 +9,8 @@ export declare enum StringConstant {
 export declare enum CommandlineArguments {
     folder = "folder",
     name = "name",
-    type = "type"
+    type = "type",
+    filter = "filter"
 }
 export declare enum ErrorMessage {
     noName = "No bundle name defined",
@@ -24,6 +25,7 @@ export interface IGetBundleExport {
     folder: string;
     name: string;
     type: BundleType;
+    filter?: string;
 }
 export interface IBundleExport {
     [key: string]: string;

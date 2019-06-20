@@ -14,6 +14,7 @@ var CommandlineArguments;
     CommandlineArguments["folder"] = "folder";
     CommandlineArguments["name"] = "name";
     CommandlineArguments["type"] = "type";
+    CommandlineArguments["filter"] = "filter";
 })(CommandlineArguments = exports.CommandlineArguments || (exports.CommandlineArguments = {}));
 var ErrorMessage;
 (function (ErrorMessage) {
