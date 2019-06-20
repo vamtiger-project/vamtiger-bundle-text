@@ -24,8 +24,8 @@ if (!name) {
 
 bundleText({ folder, name, type, filter });
 
-async function bundleText({ folder, name, type }: IGetBundleExport) {
-    const bundleText = await getBundleExport({ folder, name, type })
+async function bundleText({ folder, name, type, filter }: IGetBundleExport) {
+    const bundleText = await getBundleExport({ folder, name, type, filter })
         .catch(handleError);
 
     return bundleText;
