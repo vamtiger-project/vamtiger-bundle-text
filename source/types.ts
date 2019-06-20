@@ -10,7 +10,8 @@ export enum StringConstant {
 export enum CommandlineArguments {
     folder = 'folder',
     name = 'name',
-    type = 'type'
+    type = 'type',
+    filter = 'filter'
 }
 
 export enum ErrorMessage {
@@ -28,6 +29,7 @@ export interface IGetBundleExport {
     folder: string;
     name: string;
     type: BundleType;
+    filter?: string;
 }
 
 export interface IBundleExport {
