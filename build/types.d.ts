@@ -14,6 +14,7 @@ export declare enum CommandlineArguments {
 }
 export declare enum ErrorMessage {
     noName = "No bundle name defined",
+    noFolder = "No bundle folder defined",
     noBundle = "No bundle created"
 }
 export declare enum BundleType {

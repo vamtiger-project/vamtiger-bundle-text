@@ -19,6 +19,7 @@ var CommandlineArguments;
 var ErrorMessage;
 (function (ErrorMessage) {
     ErrorMessage["noName"] = "No bundle name defined";
+    ErrorMessage["noFolder"] = "No bundle folder defined";
     ErrorMessage["noBundle"] = "No bundle created";
 })(ErrorMessage = exports.ErrorMessage || (exports.ErrorMessage = {}));
 var BundleType;
