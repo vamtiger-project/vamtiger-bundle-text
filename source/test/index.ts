@@ -20,7 +20,7 @@ const jsBundle = 'bundle.js';
 const jsonBundle = 'bundle.json';
 const bundlePaths = [tsBundle, jsBundle, jsonBundle].map(fileName => resolvePath(__dirname, fileName));
 const removeFiles = `rm -rf ${bundlePaths.map(fileName => resolvePath(__dirname, fileName)).join(space)};`;
-const bundle = bundlePaths.map(bundlePath => `node ${bundleTextPath} ${getParams(bundlePath)}`)
+const bundle = bundlePaths.map(bundlePath => `node ${bundleTextPath} --folder ${__dirname} ${getParams(bundlePath)}`)
     .join(` ${and} `);
 const bundleOptions = {
     cwd: __dirname

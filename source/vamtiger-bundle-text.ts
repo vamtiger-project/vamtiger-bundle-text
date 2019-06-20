@@ -1,3 +1,4 @@
+import { resolve as resolvePath } from 'path';
 import Args from 'vamtiger-argv/build/main';
 import {
     CommandlineArguments,
@@ -9,13 +10,15 @@ import getBundleExport from './get-bundle-export';
 
 const args = new Args();
 const { cwd } = process;
-const folder = args.has(CommandlineArguments.folder) && args.get(CommandlineArguments.folder) || cwd();
+const folder = args.has(CommandlineArguments.folder) && resolvePath(cwd(), args.get(CommandlineArguments.folder) as string);
 const name = args.has(CommandlineArguments.name) && args.get(CommandlineArguments.name);
 const type = (args.has(CommandlineArguments.type) && args.get(CommandlineArguments.type) || BundleType.ts) as BundleType;
-const { noName } = ErrorMessage;
+const { noName, noFolder } = ErrorMessage;
 
 if (!name) {
     throw new Error(noName);
+} else if (!folder) {
+    throw new Error(noFolder);
 }
 
 bundleText({ folder, name, type });
