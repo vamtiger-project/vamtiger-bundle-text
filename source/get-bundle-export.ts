@@ -31,8 +31,8 @@ export default async function ({ folder, name, type, filter: filterPattern }: IG
         .all((filteredFilePaths as string[]).map(async filePath => ({ [filePath.replace(folder, nothing).replace(leadingSlash, nothing)]: await getFileText(filePath)}) as IBundleExport))
         .then(bundleExports => bundleExports.reduce((bundleExport, currentBundleExport) => ({...bundleExport, ...currentBundleExport}), {} as IBundleExport));
     const bundleExportStatement = type === BundleType.json && stringify(bundleExport)
-        || type === BundleType.js && `module.exports = ${stringify(bundleExport)}`
-        || type === BundleType.ts && `export default ${stringify(bundleExport)}`;
+        || type === BundleType.js && `module.exports = ${stringify(bundleExport)};`
+        || type === BundleType.ts && `export default ${stringify(bundleExport)};`;
 
     if (!bundleExportStatement) {
         throw new Error(noBundle);
